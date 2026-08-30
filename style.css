@@ -1,0 +1,158 @@
+body{
+  background-color:cornsilk;
+}
+h1{
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: #3b3b3b;
+  text-align: center;
+  margin-top: 5%;
+
+}
+/*---- 3 houses ----*/
+ul{
+  margin: 15%;
+  padding-left: 0;
+  rotate: 50deg;
+}
+/* everything in reference to each other in the list ; 
+The houses in reference to one another */
+ul li{
+list-style:none;
+position: relative;
+margin: 5px;
+transform: rotate(-55deg);
+
+}
+/* Base of each house */
+ul li a{
+  display: block;
+  width: 70px;
+  height: 50px;
+  background-color: white;
+  align-content: center;
+  text-align: center;
+  translate:(0,0);
+  margin-bottom: 10%;
+}
+ul li a{/* <- .fa */
+  transition: .5s;
+  padding-right: 10px;
+  background-color: #f1f1f1;
+  transform: rotate(-30deg) skew(25deg) translate(0,0);
+  position: relative;
+  box-shadow: -20px 20px 10px rgba(0,0,0,.5);
+  align-items: center;
+
+
+}
+ul li a:before{
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: -25px;
+  width: 25px;
+  height: 50px;
+  background-color: #9b9b9b;
+  transform: rotate(0deg) skewY(-45deg);
+}
+ul li a ::after{
+  content: "";
+  position: absolute;
+  top: 60px;
+  left: -15px;
+  width: 10px;
+  height: 15px;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  background-color: #2d383a;
+  transform: rotate(0deg) skewX(-45deg)translateX(35px);
+
+  z-index: 1;
+}
+ul li a::after{
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: -13px;
+  width: 81px;
+  height: 25px;
+  background-color: #b8b8b8;
+  transform: rotate(0deg) skewX(-45deg);
+}
+ul li a:hover{
+  background-color: orange; 
+  transform: rotate(-30deg) skew(25deg) translate(20px,-15px);
+  box-shadow: -50px 50px 50px rgba(0,0,0,.65);
+}
+
+/*--- Hover colors top, before, after  ---*/
+ul li:hover:nth-child(1) a{
+  background: #f2b0b0;
+}
+ul li:hover:nth-child(1) a::before{
+  background-color: #ec5353;
+}
+ul li:hover:nth-child(1) a::after{
+  background-color: #f09191;
+}
+ul li:hover:nth-child(2) a{
+  background: #ffd391;
+}
+ul li:hover:nth-child(2) a::before{
+  background-color: #ff9900;
+}
+ul li:hover:nth-child(2) a::after{
+  background-color: #ffac2f;
+}
+ul li:hover:nth-child(3) a{
+  background: #a4ceec;
+}
+ul li:hover:nth-child(3) a::before{
+  background-color: #2371a9;
+}
+ul li:hover:nth-child(3) a::after{
+  background-color: #53a2db;
+}
+ul li:hover:nth-child(4) a{
+  background: #90ee90;
+}
+ul li:hover:nth-child(4) a::before{
+  background-color: #568f56;
+}
+ul li:hover:nth-child(4) a::after{
+  background-color: #73be73;
+}
+/* house placement */
+ul li:nth-child(1){
+  position: absolute;
+  margin-left: 22%;
+  margin-top: 10%;
+}
+ul li:nth-child(4){
+  position: absolute;
+  transform: scale(2);
+  rotate: -55deg;
+  z-index: -1;
+  top: 100%;
+}
+/*-- icon settings --*/
+ul li .fa-solid{
+  color:	#3b3b3b;
+}
+ul li:hover .fa-solid{
+  color: white;
+}
+ul li .fa-brands{
+  color:	#3b3b3b;
+}
+ul li:hover .fa-brands{
+  color: white;
+}
+
+/*---- ROAD ----*/
+
+
+
