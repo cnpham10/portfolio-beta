@@ -1,5 +1,7 @@
 body{
   background-color:cornsilk;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 h1{
   font-family: "Dosis", sans-serif;
@@ -8,24 +10,27 @@ h1{
   font-style: normal;
   color: #3b3b3b;
   text-align: center;
-  margin-top: 5%;
+  margin-top: 4%;
+  margin-bottom: 0;
 
 }
 /*---- houses ----*/
 ul{
-  margin: 12%;
+  margin: 6% 8% 0 16%;
   padding-left: 0;
   rotate: 50deg;
   position: relative;
-  min-height: 480px;
+  min-height: 72vh;
+  width: 72%;
 }
 /* everything in reference to each other in the list ; 
 The houses in reference to one another */
 ul li{
 list-style:none;
-position: relative;
+position: absolute;
 margin: 5px;
 transform: rotate(-55deg);
+z-index: 2;
 
 }
 /* Base of each house */
@@ -163,50 +168,44 @@ ul li:hover:nth-child(8) a::before{
 ul li:hover:nth-child(8) a::after{
   background-color: #e8c85a;
 }
-/* house placement */
+/* house placement — same size, along the street */
 ul li:nth-child(1){
-  position: absolute;
-  margin-left: 22%;
-  margin-top: 10%;
+  left: 8%;
+  top: 6%;
 }
 ul li:nth-child(2){
-  position: absolute;
-  left: 42%;
-  top: 18%;
+  left: 30%;
+  top: 16%;
 }
 ul li:nth-child(3){
-  position: absolute;
-  left: 62%;
-  top: 28%;
+  left: 52%;
+  top: 26%;
 }
 ul li:nth-child(4){
-  position: absolute;
-  transform: scale(2);
-  rotate: -55deg;
-  z-index: -1;
-  top: 100%;
-}
-ul li:nth-child(5){
-  position: absolute;
-  left: 8%;
+  left: 74%;
   top: 36%;
 }
+ul li:nth-child(5){
+  left: 14%;
+  top: 42%;
+}
 ul li:nth-child(6){
-  position: absolute;
-  left: 48%;
+  left: 36%;
   top: 52%;
 }
 ul li:nth-child(7){
-  position: absolute;
-  left: 72%;
-  top: 8%;
+  left: 58%;
+  top: 62%;
 }
 ul li:nth-child(8){
-  position: absolute;
-  left: 28%;
-  top: 68%;
+  left: 22%;
+  top: 72%;
 }
 /*-- icon settings --*/
+ul li a i{
+  display: inline-block;
+  transform: skew(-25deg) rotate(30deg);
+}
 ul li .fa-solid{
   color:	#3b3b3b;
 }
@@ -224,37 +223,37 @@ ul li:hover .fa-brands{
 ul::before{
   content: "";
   position: absolute;
-  left: -6%;
-  top: 42%;
-  width: 360px;
-  height: 42px;
+  left: 0%;
+  top: 48%;
+  width: 440px;
+  height: 38px;
   background-color: #8f8f8f;
   transform: rotate(-30deg) skewX(-45deg);
   box-shadow: -16px 16px 0 #6a6a6a;
-  z-index: -2;
+  z-index: 0;
 }
 ul::after{
   content: "";
   position: absolute;
-  left: 2%;
-  top: calc(42% + 20px);
-  width: 320px;
+  left: 6%;
+  top: calc(48% + 18px);
+  width: 380px;
   height: 0;
   border-top: 3px dashed #f0d24a;
   transform: rotate(-30deg) skewX(-45deg);
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
 }
 ul li .road{
   display: block;
   width: 16px;
-  height: 64px;
+  height: 72px;
   background-color: #9a9a9a;
   position: absolute;
   left: 22px;
-  top: 48px;
+  top: 52px;
   transform: rotate(-30deg) skew(25deg);
-  z-index: -1;
+  z-index: 1;
   box-shadow: -10px 10px 0 #6e6e6e;
 }
 ul li .road:before{
@@ -263,7 +262,7 @@ ul li .road:before{
   top: 8px;
   left: -12px;
   width: 12px;
-  height: 64px;
+  height: 72px;
   background-color: #6e6e6e;
   transform: skewY(-45deg);
 }
