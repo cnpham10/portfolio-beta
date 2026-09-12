@@ -12,17 +12,19 @@ h1{
   text-align: center;
   margin-top: 4%;
   margin-bottom: 0;
-
 }
-/*---- city ----*/
+
+/*---- city: whole map tipped into isometric view ----*/
 .city{
   position: relative;
   width: 820px;
   height: 560px;
   margin: 8% auto 0;
-  rotate: 50deg;
+  transform: rotate(50deg);
+  transform-style: preserve-3d;
 }
-/*---- houses ----*/
+
+/*---- houses: place only — NO 2D spin on the li ----*/
 ul{
   margin: 0;
   padding-left: 0;
@@ -30,38 +32,32 @@ ul{
   width: 100%;
   height: 100%;
 }
-/* everything in reference to each other in the list ;
-The houses in reference to one another */
 ul li{
-list-style:none;
-position: absolute;
-transform: rotate(-55deg);
-z-index: 2;
-
+  list-style: none;
+  position: absolute;
+  z-index: 2;
+  transform: none;
 }
-/* Base of each house — same isometric faces for every orientation */
+
+/* Shared brick volume (front/side/top) */
 ul li a{
   display: block;
   width: 70px;
   height: 50px;
-  background-color: white;
-  align-content: center;
-  text-align: center;
-  translate:(0,0);
-}
-ul li a{/* <- .fa */
   transition: .5s;
   padding-right: 10px;
   background-color: #f1f1f1;
-  transform: rotate(-30deg) skew(25deg) translate(0,0);
   position: relative;
-  box-shadow: -20px 20px 10px rgba(0,0,0,.5);
-  align-items: center;
-
-
+  text-align: center;
+  align-content: center;
+  box-shadow: -20px 20px 10px rgba(0,0,0,.45);
 }
-/* left wall */
-ul li a::before{
+
+/* ---- face-se: original 3D isometric (south-east) ---- */
+ul li.face-se a{
+  transform: rotate(-30deg) skew(25deg) translate(0,0);
+}
+ul li.face-se a::before{
   content: "";
   position: absolute;
   top: 13px;
@@ -69,10 +65,9 @@ ul li a::before{
   width: 25px;
   height: 50px;
   background-color: #9b9b9b;
-  transform: rotate(0deg) skewY(-45deg);
+  transform: skewY(-45deg);
 }
-/* front / ground face */
-ul li a::after{
+ul li.face-se a::after{
   content: "";
   position: absolute;
   top: 50px;
@@ -80,139 +75,85 @@ ul li a::after{
   width: 81px;
   height: 25px;
   background-color: #b8b8b8;
-  transform: rotate(0deg) skewX(-45deg);
+  transform: skewX(-45deg);
 }
-ul li a:hover{
-  background-color: orange;
+ul li.face-se a:hover{
   transform: rotate(-30deg) skew(25deg) translate(20px,-15px);
   box-shadow: -50px 50px 50px rgba(0,0,0,.65);
 }
 
-/*--- Hover colors top, before, after  ---*/
-ul li:hover:nth-child(1) a{
-  background: #f2b0b0;
+/* ---- face-sw: mirrored 3D isometric (south-west) ---- */
+ul li.face-sw a{
+  transform: rotate(30deg) skew(-25deg) translate(0,0);
+  padding-right: 0;
+  padding-left: 10px;
+  box-shadow: 20px 20px 10px rgba(0,0,0,.45);
 }
-ul li:hover:nth-child(1) a::before{
-  background-color: #ec5353;
+ul li.face-sw a::before{
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: auto;
+  right: -25px;
+  width: 25px;
+  height: 50px;
+  background-color: #9b9b9b;
+  transform: skewY(45deg);
 }
-ul li:hover:nth-child(1) a::after{
-  background-color: #f09191;
+ul li.face-sw a::after{
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: auto;
+  right: -13px;
+  width: 81px;
+  height: 25px;
+  background-color: #b8b8b8;
+  transform: skewX(45deg);
 }
-ul li:hover:nth-child(2) a{
-  background: #ffd391;
+ul li.face-sw a:hover{
+  transform: rotate(30deg) skew(-25deg) translate(-20px,-15px);
+  box-shadow: 50px 50px 50px rgba(0,0,0,.65);
 }
-ul li:hover:nth-child(2) a::before{
-  background-color: #ff9900;
-}
-ul li:hover:nth-child(2) a::after{
-  background-color: #ffac2f;
-}
-ul li:hover:nth-child(3) a{
-  background: #a4ceec;
-}
-ul li:hover:nth-child(3) a::before{
-  background-color: #2371a9;
-}
-ul li:hover:nth-child(3) a::after{
-  background-color: #53a2db;
-}
-ul li:hover:nth-child(4) a{
-  background: #90ee90;
-}
-ul li:hover:nth-child(4) a::before{
-  background-color: #568f56;
-}
-ul li:hover:nth-child(4) a::after{
-  background-color: #73be73;
-}
-ul li:hover:nth-child(5) a{
-  background: #d4b0f2;
-}
-ul li:hover:nth-child(5) a::before{
-  background-color: #7b53ec;
-}
-ul li:hover:nth-child(5) a::after{
-  background-color: #b091f0;
-}
-ul li:hover:nth-child(6) a{
-  background: #b0f2e4;
-}
-ul li:hover:nth-child(6) a::before{
-  background-color: #2aa89a;
-}
-ul li:hover:nth-child(6) a::after{
-  background-color: #6fd4c5;
-}
-ul li:hover:nth-child(7) a{
-  background: #f2b0e0;
-}
-ul li:hover:nth-child(7) a::before{
-  background-color: #c2187a;
-}
-ul li:hover:nth-child(7) a::after{
-  background-color: #e091c4;
-}
-ul li:hover:nth-child(8) a{
-  background: #f2e4b0;
-}
-ul li:hover:nth-child(8) a::before{
-  background-color: #d4a017;
-}
-ul li:hover:nth-child(8) a::after{
-  background-color: #e8c85a;
-}
-/*
-  Face a few houses different directions by rotating the whole li.
-  Keep angles modest so the shared rotate(-30deg) skew(25deg) house
-  geometry still reads as the same isometric brick volume.
-*/
-ul li:nth-child(3){
-  transform: rotate(-30deg);
-}
-ul li:nth-child(4){
-  transform: rotate(-75deg);
-}
-ul li:nth-child(6){
-  transform: rotate(-40deg);
-}
-ul li:nth-child(8){
-  transform: rotate(-70deg);
-}
-/* house placement — doors sit on the connected streets */
-ul li:nth-child(1){
-  left: 70px;
-  top: 215px;
-}
-ul li:nth-child(2){
-  left: 200px;
-  top: 215px;
-}
-ul li:nth-child(3){
-  left: 275px;
-  top: 70px;
-}
-ul li:nth-child(4){
-  left: 415px;
-  top: 85px;
-}
-ul li:nth-child(5){
-  left: 450px;
-  top: 215px;
-}
-ul li:nth-child(6){
-  left: 110px;
-  top: 305px;
-}
-ul li:nth-child(7){
-  left: 275px;
-  top: 155px;
-}
-ul li:nth-child(8){
-  left: 415px;
-  top: 305px;
-}
-/*-- door: black half oval on the front wall --*/
-ul li a .door{
+
+/*--- Hover colors (top / side / front) ---*/
+ul li:hover:nth-child(1) a{ background-color: #f2b0b0; }
+ul li:hover:nth-child(1) a::before{ background-color: #ec5353; }
+ul li:hover:nth-child(1) a::after{ background-color: #f09191; }
+ul li:hover:nth-child(2) a{ background-color: #ffd391; }
+ul li:hover:nth-child(2) a::before{ background-color: #ff9900; }
+ul li:hover:nth-child(2) a::after{ background-color: #ffac2f; }
+ul li:hover:nth-child(3) a{ background-color: #a4ceec; }
+ul li:hover:nth-child(3) a::before{ background-color: #2371a9; }
+ul li:hover:nth-child(3) a::after{ background-color: #53a2db; }
+ul li:hover:nth-child(4) a{ background-color: #90ee90; }
+ul li:hover:nth-child(4) a::before{ background-color: #568f56; }
+ul li:hover:nth-child(4) a::after{ background-color: #73be73; }
+ul li:hover:nth-child(5) a{ background-color: #d4b0f2; }
+ul li:hover:nth-child(5) a::before{ background-color: #7b53ec; }
+ul li:hover:nth-child(5) a::after{ background-color: #b091f0; }
+ul li:hover:nth-child(6) a{ background-color: #b0f2e4; }
+ul li:hover:nth-child(6) a::before{ background-color: #2aa89a; }
+ul li:hover:nth-child(6) a::after{ background-color: #6fd4c5; }
+ul li:hover:nth-child(7) a{ background-color: #f2b0e0; }
+ul li:hover:nth-child(7) a::before{ background-color: #c2187a; }
+ul li:hover:nth-child(7) a::after{ background-color: #e091c4; }
+ul li:hover:nth-child(8) a{ background-color: #f2e4b0; }
+ul li:hover:nth-child(8) a::before{ background-color: #d4a017; }
+ul li:hover:nth-child(8) a::after{ background-color: #e8c85a; }
+
+/* placements — doors toward the street grid */
+ul li:nth-child(1){ left: 70px; top: 215px; }
+ul li:nth-child(2){ left: 200px; top: 215px; }
+ul li:nth-child(3){ left: 275px; top: 70px; }
+ul li:nth-child(4){ left: 415px; top: 85px; }
+ul li:nth-child(5){ left: 450px; top: 215px; }
+ul li:nth-child(6){ left: 110px; top: 305px; }
+ul li:nth-child(7){ left: 275px; top: 155px; }
+ul li:nth-child(8){ left: 415px; top: 305px; }
+
+/* door on front face */
+ul li.face-se a .door{
   position: absolute;
   top: 58px;
   left: 28px;
@@ -225,84 +166,132 @@ ul li a .door{
   z-index: 4;
   pointer-events: none;
 }
-/*-- icon settings --*/
-ul li a i{
+ul li.face-sw a .door{
+  position: absolute;
+  top: 58px;
+  left: auto;
+  right: 28px;
+  width: 12px;
+  height: 17px;
+  background-color: #2d383a;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  transform: skewX(45deg);
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* icons counter-skewed so they sit flat on the top face */
+ul li.face-se a i{
   display: inline-block;
   transform: skew(-25deg) rotate(30deg);
   position: relative;
   z-index: 2;
 }
-ul li .fa-solid{
-  color:	#3b3b3b;
+ul li.face-sw a i{
+  display: inline-block;
+  transform: skew(25deg) rotate(-30deg);
+  position: relative;
+  z-index: 2;
 }
-ul li:hover .fa-solid{
-  color: white;
-}
+ul li .fa-solid,
 ul li .fa-brands{
-  color:	#3b3b3b;
+  color: #3b3b3b;
 }
+ul li:hover .fa-solid,
 ul li:hover .fa-brands{
   color: white;
 }
 
-/*---- ROAD: darker asphalt, white edges, yellow dashed center ----*/
+/*---- ROADS: thick asphalt slab + white edges + white dashed center ----*/
 .street{
   position: absolute;
   z-index: 0;
   background-color: #3f3f3f;
-  box-shadow:
-    -14px 14px 0 #2a2a2a,
-    -18px 22px 18px rgba(0, 0, 0, 0.22);
 }
+
+/* horizontal avenue — top deck + 3D side slab via ::before */
 .street.ave{
   left: 40px;
   top: 260px;
   width: 720px;
   height: 52px;
+}
+.street.ave::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 18px;
+  background: #2a2a2a;
+  transform: skewX(-45deg);
+  transform-origin: top left;
+  box-shadow: -10px 12px 16px rgba(0,0,0,.25);
+}
+.street.ave::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   background-image:
     linear-gradient(#f5f5f5, #f5f5f5),
     linear-gradient(#f5f5f5, #f5f5f5),
     repeating-linear-gradient(
       90deg,
-      #f0d24a 0 14px,
+      #f5f5f5 0 14px,
       transparent 14px 28px
-    ),
-    linear-gradient(#3f3f3f, #3f3f3f);
+    );
   background-size:
-    100% 2px,
-    100% 2px,
     100% 3px,
-    100% 100%;
+    100% 3px,
+    100% 3px;
   background-position:
-    center top 3px,
-    center bottom 3px,
-    center center,
+    center top 5px,
+    center bottom 5px,
     center center;
   background-repeat: no-repeat;
 }
+
+/* vertical boulevard */
 .street.blvd{
   left: 348px;
   top: 30px;
   width: 52px;
   height: 460px;
+}
+.street.blvd::before{
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: 18px;
+  height: 100%;
+  background: #2a2a2a;
+  transform: skewY(-45deg);
+  transform-origin: top left;
+  box-shadow: 8px 10px 16px rgba(0,0,0,.25);
+}
+.street.blvd::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   background-image:
     linear-gradient(#f5f5f5, #f5f5f5),
     linear-gradient(#f5f5f5, #f5f5f5),
     repeating-linear-gradient(
       180deg,
-      #f0d24a 0 14px,
+      #f5f5f5 0 14px,
       transparent 14px 28px
-    ),
-    linear-gradient(#3f3f3f, #3f3f3f);
+    );
   background-size:
-    2px 100%,
-    2px 100%,
     3px 100%,
-    100% 100%;
+    3px 100%,
+    3px 100%;
   background-position:
-    left 3px center,
-    right 3px center,
-    center center,
+    left 5px center,
+    right 5px center,
     center center;
   background-repeat: no-repeat;
 }
